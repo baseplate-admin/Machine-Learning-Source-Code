@@ -21,7 +21,7 @@ import tensorflow.keras
 
 
 model=tf.keras.models.Sequential([
-    tf.keras.layers.Conv2D(16,(3,3),activation='relu',input_shape=(150,150,3)),
+    tf.keras.layers.Conv2D(16,(3,3),activation='relu',input_shape=(200,200,3)),
     tf.keras.layers.MaxPool2D(2,2),
     tf.keras.layers.Conv2D(32,(3,3),activation='relu'),
     tf.keras.layers.MaxPool2D(2,2),
@@ -46,13 +46,13 @@ validation_datagen= ImageDataGenerator(rescale=1.0/255.0)
 
 train_generator=train_datagen.flow_from_directory(
 train_dir,
-target_size=(150,150),
+target_size=(200,200),
 class_mode='binary',
 batch_size=64
 )
 validation_generator=validation_datagen.flow_from_directory(
 validation_dir,
-target_size=(150,150),
+target_size=(200,200),
 class_mode='binary',
 batch_size=64
 )
