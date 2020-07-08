@@ -41,8 +41,16 @@ loss="binary_crossentropy",metrics = ['accuracy'])
 import tensorflow.keras.preprocessing.image
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-train_datagen= ImageDataGenerator(rescale=1.0/255.0)
-validation_datagen= ImageDataGenerator(rescale=1.0/255.0)
+train_datagen= ImageDataGenerator(rescale=1.0/255.0,
+        shear_range=0.2,
+        zoom_range=0.2,
+        horizontal_flip=True,
+        )
+validation_datagen= ImageDataGenerator(rescale=1.0/255.0,
+        shear_range=0.2,
+        zoom_range=0.2,
+        horizontal_flip=True,
+)
 
 train_generator=train_datagen.flow_from_directory(
 train_dir,
@@ -62,3 +70,4 @@ history=model.fit(train_generator,
         epochs=25,
         validation_steps=50,
         verbose=0)
+model.save("cats_dogs.h5")
