@@ -83,36 +83,10 @@ model = tf.keras.models.Sequential([
 ])
 
 
-
-
-import matplotlib.pyplot as plt
-acc = history.history['accuracy']
-val_acc=history.history['val_accuracy']
-loss=history.history['loss']
-val_loss=history.history['val_loss']
-
-epochs=int(len(range(acc)))
-
-plt.plot(epochs,acc,'r',label='Training accuracy')
-plt.plot(epochs, val_acc, 'b',label='Validation accuracy')
-plt.title('Training and validation accuracy.')
-plt.legend(loc=0)
-plt.figure()
-
-plt.show()
-
-import numpy as np
-from google.colab import files
-from keras.preprocessing import image
-
-uploaded=files.upload()
-
-for fn in uploaded.keys():
-    path = fn
-    img=image.load_img(path, target_size=(150,150))
-    x= image.img_to_array(img)
-    x= np.expand_dims(x, axis=0)
-    images=np.vstack([x])
-    classes = model.predict(images, batch_size=10)
-    print(fn)
-    print(classes)
+history=model.fit(train_generator,
+                validation_data=validation_generator,
+                setps_per_epoch=10,
+                validation_steps=3,
+                verbose=1
+                )
+model.save("rpc.h5")
