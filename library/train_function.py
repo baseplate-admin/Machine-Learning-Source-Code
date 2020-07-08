@@ -132,40 +132,14 @@ def rps():
         tf.keras.layers.Dense(3, activation='softmax')
     ])
 
+    history=model.fit(train_generator,
+            validation_data=validation_generator,
+            steps_per_epoch=100,
+            epochs=25,
+            validation_steps=50,
+            verbose=0)
+    model.save("rps.h5")
 
-
-
-    import matplotlib.pyplot as plt
-    acc = history.history['accuracy']
-    val_acc=history.history['val_accuracy']
-    loss=history.history['loss']
-    val_loss=history.history['val_loss']
-
-    epochs=int(len(range(acc)))
-
-    plt.plot(epochs,acc,'r',label='Training accuracy')
-    plt.plot(epochs, val_acc, 'b',label='Validation accuracy')
-    plt.title('Training and validation accuracy.')
-    plt.legend(loc=0)
-    plt.figure()
-
-    plt.show()
-
-    import numpy as np
-    from google.colab import files
-    from keras.preprocessing import image
-
-    uploaded=files.upload()
-
-    for fn in uploaded.keys():
-        path = fn
-        img=image.load_img(path, target_size=(150,150))
-        x= image.img_to_array(img)
-        x= np.expand_dims(x, axis=0)
-        images=np.vstack([x])
-        classes = model.predict(images, batch_size=10)
-        print(fn)
-        print(classes)
 def tensorflow_mnist():
     import tensorflow as tf
     from tensorflow import keras
