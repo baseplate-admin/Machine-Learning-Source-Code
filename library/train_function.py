@@ -63,6 +63,7 @@ def cat_and_dogs():
             epochs=25,
             validation_steps=50,
             verbose=0)
+    model.save("cad.h5")
 def rps():
     import os
 
