@@ -10,7 +10,7 @@ import tensorflow as tf
 import tensorflow.keras
 
 def model(number):
-    print("This is Convolutional Neural Network.")
+    print("This is Convolutional Neural Network")
     ask_for_neural_input=int(input("""
     Which Neural network will you choose?
     """)
