@@ -10,4 +10,6 @@ ask_number=input("""
 What is your neural network number?
 1.Default
 """)
-model(ask_number)
+ask_train_dir=input("What is your Train Directory?")
+ask_validation_dir=input("What is your Validation Directory?")
+model(ask_number,ask_train_dir,ask_validation_dir)
