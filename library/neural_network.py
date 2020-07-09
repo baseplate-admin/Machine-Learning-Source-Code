@@ -5,7 +5,7 @@ import tensorflow.keras
 import tensorflow.keras.preprocessing.image
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-def model(number):
+def model(number,train_dir,validation_dir):
     print("This is Convolutional Neural Network")
     print("""
     Which Neural network will you choose?
