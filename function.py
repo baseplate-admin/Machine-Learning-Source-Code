@@ -5,6 +5,8 @@ if ask_zip == 'Yes' or ask_zip=='yes':
     zip_extract()
 elif ask_zip=="no" or ask_zip=="No":
     print("We are skipping ZIP extraction!")
+else:
+    print("Theres a problem with ZIP extract")
 from library.neural_network import model
 ask_number=input("""
 What is your neural network number?
